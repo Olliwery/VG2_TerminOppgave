@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+{% block body %}
+<br>
+<br>
+<div class="cookieclickergame">
+    <div class="cookieclicker">
+        <h2 id="showCookies">Cookies</h2>
+    </div>
+    <button onclick="clickCookie()" type="button" style="border: none; background: none; padding: 0; cursor: pointer;">
+        <img class="cookieimg" src="/static/images/cookie.svg" alt="Bildet av Cookie">
+    </button>
+</div>
+<br>
+
+<a id="goback" href="/">Go Back</a>
+<script src="/static/javascript.js"></script>
+
+{% endblock %}
