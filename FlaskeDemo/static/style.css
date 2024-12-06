@@ -54,3 +54,26 @@ footer {
     right: 0px;
     margin-bottom: 0px;
 }
+
+.ticketing form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.ticketing input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.ticketing button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.ticketing button:hover {
+    background-color: #218838;
+}

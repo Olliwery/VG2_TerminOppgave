@@ -1,18 +1,18 @@
-import mysql.connector
+# import mysql.connector
 
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="xxx",
-  password="xxx"
-  database="Termin2VG2"
-  )
+# mydb = mysql.connector.connect(
+#   host="localhost",
+#   user="xxx",
+#   password="xxx"
+#   database="Termin2VG2"
+#   )
 
 
-mycursor = mydb.cursor()
+# mycursor = mydb.cursor()
 
-mycursor.execute('''hjfiuhjiu''')
+# mycursor.execute('''hjfiuhjiu''')
 
-resultat = mycursor.fetchall()
+# resultat = mycursor.fetchall()
 
-return resultat
+# return resultat
