@@ -9,7 +9,7 @@ CREATE TABLE Brukere (
     passord varchar(255) NOT NULL,
     PRIMARY KEY (id)
 );
-    
+
 
 CREATE TABLE snake {
     id int NOT NULL AUTO_INCREMENT,
@@ -27,6 +27,8 @@ CREATE TABLE kobling {
 }
 
 INSERT INTO Brukere (username, email, passord) VALUES ("Bob", "Bob@gmail.com", "Bob123")
+INSERT INTO Brukere (username, email, passord) VALUES ("max", "max@gmail.com", "max123456")
+
 
 
 CREATE TABLE tickets (
@@ -36,3 +38,4 @@ CREATE TABLE tickets (
     message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+

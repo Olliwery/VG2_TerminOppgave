@@ -14,7 +14,6 @@
         <a href="/loginregister">Login / Register</a>
         <a href="/omoss">Om Oss</a>
         <a href="/kontaktoss">Kontakt Oss</a>
-        <a href="/data">Data</a>
     </div>
    
     {% block body %}
@@ -30,7 +29,20 @@
             <button type="button" onclick="closePopup('popup1')">x</button>
             <!-- Usynlig Boks som popper opp når du trykker på Button -->
             <div class="kortsamling">
-                <iframe id="iframe1" src="/data" frameborder="0"></iframe>
+                <iframe id="iframe1" src="/cookies" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="altTest">
+        <!-- Kort 1 -->
+        <img id="cookielogo" src="/static/images/cookie.svg" type="submit" class="btnTest1"
+            onclick="openPopup('popup2')">
+        <div class="popup" id="popup2">
+            <!-- Gjør boksen usynlig igjen -->
+            <button type="button" onclick="closePopup('popup1')">x</button>
+            <!-- Usynlig Boks som popper opp når du trykker på Button -->
+            <div class="kortsamling">
+                <iframe id="iframe1" src="/snake" frameborder="0"></iframe>
             </div>
         </div>
     </div>
@@ -39,7 +51,7 @@
 
 
 
-    
+
 </div>
 
 
