@@ -60,4 +60,4 @@ def data():
     return render_template('cookies.html', sendesInn=num, noeAnnet="Her er det", Baka=liste)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port='4500')
