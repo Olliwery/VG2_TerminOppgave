@@ -6,46 +6,46 @@ import os
 
 app = Flask(__name__)
 
-app.secret_key = os.urandom(24)  # Generates a random key each time the app restarts
+# Setter opp en hemmelig nøkkel for sesjonshåndtering
+app.secret_key = os.urandom(24)
 
-
-# Add the path for importing the connection function if needed
+# Legg til en sti for å importere eksterne funksjoner om nødvendig
 sys.path.append('C:/Users/Yong/Documents/GitHub/VG2_TerminOppgave/TerminOppgaveVG2')
 
-# Database connection function
+# Funksjon for å koble til databasen
 def get_db_connection():
     connection = mysql.connector.connect(
-        host="10.2.3.238",  # IP address of your Raspberry Pi
-        user="TerminOppgave2",           # MariaDB username
-        password="TerminOppgave2",   # MariaDB password
-        database="Termin2VG2"  # Your database name
+        host="10.2.3.238",  # Adresse til databasen (Raspberry Pi)
+        user="TerminOppgave2",  # Brukernavn
+        password="TerminOppgave2",  # Passord
+        database="Termin2VG2"  # Databasenavn
     )
     return connection
 
-# Define routes
+# Rute for hovedsiden
 @app.route('/')
 def root():
-    username = session.get('username')  # Get the username from the session if logged in
+    username = session.get('username')  # Henter brukernavn fra sesjonen
     return render_template('home.html', username=username)
 
-
+# Rute for å vise registreringssiden
 @app.route('/register')
 def GoToRegister():
     return render_template('register.html')
 
-
 from flask import redirect, url_for, session
 
+# Rute for å håndtere registrering av nye brukere
 @app.route('/register_post', methods=['POST'])
 def register():
-    username = request.form['name']
-    email = request.form['email']
-    password = request.form['password']
+    username = request.form['name']  # Henter brukernavn fra skjemaet
+    email = request.form['email']  # Henter e-post
+    password = request.form['password']  # Henter passord
 
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    # Insert the new user into the database
+    # Setter inn ny bruker i databasen
     query = "INSERT INTO Brukere (username, email, passord) VALUES (%s, %s, %s)"
     cursor.execute(query, (username, email, password))
     conn.commit()
@@ -53,18 +53,18 @@ def register():
     cursor.close()
     conn.close()
 
-    # Save the username in the session
+    # Lagrer brukernavn i sesjonen
     session['username'] = username
 
-    # Redirect to the home page
+    # Viderekobler til hovedsiden
     return redirect(url_for('root'))
 
-
-
+# Rute for innlogging
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+# Rute for å håndtere innloggingsskjema
 @app.route('/login_post', methods=['POST'])
 def login_post():
     username = request.form['name']
@@ -74,7 +74,7 @@ def login_post():
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    # Check if the user exists in the database
+    # Sjekker om brukeren eksisterer i databasen
     query = "SELECT * FROM Brukere WHERE username = %s AND email = %s AND passord = %s"
     cursor.execute(query, (username, email, password))
     user = cursor.fetchone()
@@ -83,54 +83,52 @@ def login_post():
     conn.close()
 
     if user:
-        # Save the username in the session
+        # Lagrer brukernavn i sesjonen
         session['username'] = username
-
-        # Redirect to the home page
-        return redirect(url_for('root'))
+        return redirect(url_for('root'))  # Viderekobler til hovedsiden
     else:
-        # Show an error message if login fails
+        # Viser feilmelding hvis innlogging feiler
         return render_template('login.html', error="Feil brukernavn, e-post eller passord.")
 
-
+# Rute for å logge ut
 @app.route('/logout')
 def logout():
-    session.clear()  # Clears all session data
-    return redirect(url_for('root'))  # Redirects to the homepage
+    session.clear()  # Fjerner all sesjonsdata
+    return redirect(url_for('root'))
 
-
-
-# Single '/omoss' route
+# Rute for "om oss"-siden
 @app.route('/omoss')
 def omoss():
-    # Get a database connection
     db_connection = get_db_connection()
     cursor = db_connection.cursor()
 
-    # Query the database
-    cursor.execute("SELECT * FROM Brukere")  # Replace 'Brukere' with your actual table name
-    result = cursor.fetchall()  # Fetch all results
+    # Henter data fra tabellen "Brukere"
+    cursor.execute("SELECT * FROM Brukere")
+    result = cursor.fetchall()
 
     cursor.close()
     db_connection.close()
 
-    # Pass the data to the template
+    # Sender data til HTML-siden
     return render_template('omoss.html', data=result)
 
+# Rute for kontaktsiden
 @app.route('/kontaktoss')
 def kontaktoss():
     return render_template('kontaktoss.html')
 
+# Rute for snake-spillet
 @app.route('/snake')
 def snake():
     return render_template('snake.html')
 
+# Rute for pizza-klikkersiden
 @app.route('/Pizza')
 def Pizzas():
-    num = random.random()
-    print(num)
-    liste = "Erik, Nai, Oronai"
+    num = random.random()  # Genererer et tilfeldig tall
+    liste = "Erik, Nai, Oronai"  # Enkel streng
     return render_template('Pizza.html', sendesInn=num, noeAnnet="Her er det", Baka=liste)
 
 if __name__ == '__main__':
+    # Starter appen på port 4500
     app.run(debug=True, host='0.0.0.0', port='4500')
