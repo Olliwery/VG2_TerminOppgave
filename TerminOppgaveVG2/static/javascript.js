@@ -1,14 +1,14 @@
-let Cookies = 0;
+let Pizza = 0;
  
-printCookies()
+printPizza()
  
-function printCookies(){
-    document.getElementById("showCookies").innerHTML = Cookies + " Cookies In Stock"
+function printPizza(){
+    document.getElementById("showPizza").innerHTML = Pizza + " Pizzas In Stock"
 }
  
-function clickCookie(){
-    Cookies = Cookies + 1
-    printCookies()
+function clickPizza(){
+    Pizza = Pizza + 1
+    printPizza()
 }
 
 

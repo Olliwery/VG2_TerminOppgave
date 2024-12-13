@@ -28,6 +28,8 @@ CREATE TABLE kobling {
 
 INSERT INTO Brukere (username, email, passord) VALUES ("Bob", "Bob@gmail.com", "Bob123")
 INSERT INTO Brukere (username, email, passord) VALUES ("max", "max@gmail.com", "max123456")
+INSERT INTO Brukere (username, email, passord) VALUES ("Sigma", "Ligma@gmail.com", "Balls555")
+
 
 
 

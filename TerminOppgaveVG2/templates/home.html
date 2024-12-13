@@ -11,35 +11,43 @@
 
     <div class="sider">
         <a href="/">Home</a>
-        <a href="/loginregister">Login / Register</a>
+        <a href="/register">Login / Register</a>
         <a href="/omoss">Om Oss</a>
         <a href="/kontaktoss">Kontakt Oss</a>
     </div>
    
     {% block body %}
     <h1>PlayBox</h1>
+    <div class="content">
+        {% if username %}
+          <p>Velkommen, {{ username }}!</p>
+          <a href="/logout" class="button">Logout</a>
+        {% else %}
+          <p>Velkommen til siden! Vennligst <a href="/login">Logg inn</a> eller <a href="/register">Registrer deg </a>for å få tilgang til flere spill!</p>
+        {% endif %}
+      </div>
     <br>
 <div class="spill">
     <div class="altTest">
         <!-- Kort 1 -->
-        <img id="cookielogo" src="/static/images/cookie.svg" type="submit" class="btnTest1"
+        <img id="Pizzalogo" src="/static/images/Pizza.svg" type="submit" class="btnTest1"
             onclick="openPopup('popup1')">
         <div class="popup" id="popup1">
             <!-- Gjør boksen usynlig igjen -->
             <button type="button" onclick="closePopup('popup1')">x</button>
             <!-- Usynlig Boks som popper opp når du trykker på Button -->
             <div class="kortsamling">
-                <iframe id="iframe1" src="/cookies" frameborder="0"></iframe>
+                <iframe id="iframe1" src="/Pizza" frameborder="0"></iframe>
             </div>
         </div>
     </div>
     <div class="altTest">
         <!-- Kort 1 -->
-        <img id="cookielogo" src="/static/images/cookie.svg" type="submit" class="btnTest1"
+        <img id="Pizzalogo" src="/static/images/snake.svg" type="submit" class="btnTest1"
             onclick="openPopup('popup2')">
         <div class="popup" id="popup2">
             <!-- Gjør boksen usynlig igjen -->
-            <button type="button" onclick="closePopup('popup1')">x</button>
+            <button type="button" onclick="closePopup('popup2')">x</button>
             <!-- Usynlig Boks som popper opp når du trykker på Button -->
             <div class="kortsamling">
                 <iframe id="iframe1" src="/snake" frameborder="0"></iframe>

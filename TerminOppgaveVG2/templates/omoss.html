@@ -1,21 +1,6 @@
 {% extends 'home.html' %}
-
 {% block body %}
-    <h1>Data from Database</h1>
-    <table class="TestTable" border="0" style="padding-right: 20px;">
-        <tr class="TableOverskrift"> <!-- Overskrift for Table Innhold -->
-            <th>ID</th>
-            <th>Username</th>
-            <th>Gmail</th>
-            <th>Password</th>
-        </tr>
-        {% for row in data %}
-            <tr class="TableInnhold">
-                <td>{{ row[0] }}</td>  <!-- Innhold av table -->
-                <td>{{ row[1] }}</td>
-                <td>{{ row[2] }}</td>
-                <td>{{ row[3] }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+    <h1>Frequently Asked Questions</h1>
+    <p></p>
+    
 {% endblock %}
