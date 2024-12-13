@@ -36,7 +36,7 @@ Oppgaven er å lage en nettside som kombinerer ulike funksjoner for å lære hvo
 
 ### **Hovedfiler i prosjektet:**  
 
-- **`app.py`**  
+- **`program.py`**  
 Hovedkoden for nettsiden. Den tar seg av alt fra brukerinformasjon til spillene og kontaktsiden.  
   - `get_db_connection()`: Kobler nettsiden til MySQL-databasen.  
   - `/register`, `/login`, `/logout`: Ruter for å registrere, logge inn og ut brukere.  
@@ -94,7 +94,7 @@ Dette er et klikkespill hvor du samler pizza ved å klikke på en pizzaknapp.
 3. **Start prosjektet**  
    I terminalen, kjør:  
    ```bash
-   python app.py
+   python program.py
    ```  
    Gå til `http://localhost:4500` i nettleseren for å teste siden.  
 
@@ -102,7 +102,7 @@ Dette er et klikkespill hvor du samler pizza ved å klikke på en pizzaknapp.
 
 ## Ekstra info  
 
-- MySQL-databasen må kjøre for at nettsiden skal fungere (bruk `get_db_connection()` i `app.py` for å koble til).  
+- MySQL-databasen må kjøre for at nettsiden skal fungere (bruk `get_db_connection()` i `program.py` for å koble til).  
 - Hvis du vil endre designet, er det bare å redigere `style.css` i mappen `static/`.  
 - Spillene kan også tilpasses i `javascript.js`.  
 
